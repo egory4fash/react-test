@@ -90,28 +90,42 @@ export function sumFirstNumbers(N: number): number {
 // Считаем, что количество банкнот каждого номинала не ограничено
 
 
+// export function getBanknoteList(amountOfMoney: number): Array<number> {
+//     const banknotes = [1000, 500, 100, 50, 20, 10, 5, 2, 1]
+//     let result = []
+//
+//     for (let i = 0; i < banknotes.length; i++) {
+//         if (banknotes[i] > amountOfMoney) {
+//             continue
+//         } else {
+//             for (let j = 0; j < Math.ceil(amountOfMoney / banknotes[i]); j++) {
+//                 result.push(banknotes[i])
+//                 amountOfMoney = amountOfMoney - banknotes[i]
+//                 if (amountOfMoney === 0) {
+//                     return result
+//                 }
+//             }
+//         }
+//     }
+//     return result
+// }
+
+///////////
+
+export function testing(n: number): number {
+    return n * 2
+}
+
 export function getBanknoteList(amountOfMoney: number): Array<number> {
     const banknotes = [1000, 500, 100, 50, 20, 10, 5, 2, 1]
     let result = []
 
     for (let i = 0; i < banknotes.length; i++) {
-        if (banknotes[i] > amountOfMoney) {
-            continue
-        } else {
-            for (let j = 0; j < Math.ceil(amountOfMoney / banknotes[i]); j++) {
-                result.push(banknotes[i])
-                amountOfMoney = amountOfMoney - banknotes[i]
-                if (amountOfMoney === 0) {
-                    return result
-                }
-            }
+        while (amountOfMoney >= banknotes[i]) {
+            result.push(banknotes[i])
+            amountOfMoney -= banknotes[i]
         }
     }
-    return result
-}
 
-///////////
-
-export function testing (n:number): number {
-    return n*2
+return result
 }
